@@ -26,8 +26,7 @@ class App extends React.Component {
     );
   }
 
-
-  render() { // 'render' is a funtion brought in from React.Component
+  renderContent() { //this is a 'helper' method, to keep conditionals out of the render() method below
     if (this.state.errorMessage && !this.state.lat) {
       return <div>Error: {this.state.errorMessage}</div>;
     }
@@ -35,7 +34,15 @@ class App extends React.Component {
       return <SeasonDisplay lat={this.state.lat} />;
     }
     return (
-      <Loader />
+      <Loader message='Please allow access to your location!' />
+    );
+  }
+
+  render() { // 'render' is a function brought in from React.Component
+    return (
+    <div>
+      {this.renderContent()}
+    </div>
     );
   }
 }
