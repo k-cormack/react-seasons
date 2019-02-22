@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import SeasonDisplay from './SeasonDisplay';
 
 
 
@@ -9,7 +10,7 @@ class App extends React.Component {
 
     // ONLY time this.state is directly assigned without using 'setState' function
     this.state = { lat: null, errorMessage: '' }; //defining state properties
-
+    // alternate, without using a constructor: state = { lat: null, errorMessage: ''}; babel will create the corresponding js code
   }
 
   componentDidMount() {
@@ -30,7 +31,7 @@ class App extends React.Component {
       return <div>Error: {this.state.errorMessage}</div>;
     }
     if (!this.state.errorMessage && this.state.lat) {
-      return <div>Latitude: {this.state.lat}</div>;
+      return <SeasonDisplay lat={this.state.lat} />;
     }
     return <div>LOADING......Please wait....</div>;
   }
