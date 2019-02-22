@@ -10,6 +10,9 @@ class App extends React.Component {
     // ONLY time this.state is directly assigned without using 'setState' function
     this.state = { lat: null, errorMessage: '' }; //defining state properties
 
+  }
+
+  componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
       (position) => {
         //calling 'setState' here
@@ -20,7 +23,6 @@ class App extends React.Component {
       }
     );
   }
-
 
 
   render() { // 'render' is a funtion brought in from React.Component
